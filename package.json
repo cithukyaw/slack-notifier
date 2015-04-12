@@ -1,0 +1,25 @@
+{
+  "name": "slack-notifier",
+  "version": "0.0.1",
+  "description": "Simple module to send notifications and messages to Slack service using web hooks",
+  "main": "slack-notifier.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "superagent": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cithukyaw/slack-notifier.git"
+  },
+  "keywords": [
+    "slack"
+  ],
+  "author": "Sithu Kyaw <cithukyaw@gmail.com> (http://sithukyaw.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cithukyaw/slack-notifier/issues"
+  },
+  "homepage": "https://github.com/cithukyaw/slack-notifier"
+}
