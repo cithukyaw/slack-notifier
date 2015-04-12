@@ -1,0 +1,57 @@
+<html>
+<head>
+    <title>Slack Notifier Client Usage Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="../slack-notifier.js"></script>
+    <script>
+        // global configuration, but it can be overidden by each call
+        slackNotifier.configure({
+            url: "" // your Webhook URL (mandatory)
+            // username: "your-custom-name",
+            // channel: "#your-custom-channel",
+            // icon_url: "/path/to/your/icon",
+            // icon_emoji: ":slack:",
+            // enabled: true or false (default to true; if false all notification will not be sent; useful if you want to turn off this service from a place)
+            // callback: functionn() { } // The callback function to be executed when every notification is sent
+        });
+    </script>
+</head>
+<body>
+    <button type="button">Send to Slack</button>
+    <p></p>
+    <script>
+        function send2slack(){
+            slackNotifier.send("*1.* This is a message to the default configured channel.");
+
+            slackNotifier.send(new Error("2. This is an error object to the default configured channel"));
+
+            slackNotifier.send("*3.* This is a message to the default configured channel with callback.", function() {
+                var html = $("p").html();
+                html += "<div>The callback is executed for (3) only.</div>";
+                $("p").html(html);
+            });
+
+            slackNotifier.send("*4.* This is a message to #general.", {
+                // url: "another web hook URL",
+                username: "client-slack-notifier",
+                channel: "#general",
+                //icon_url: "",
+                icon_emoji: ":ghost:"
+            });
+
+            slackNotifier.send("*5.* This is a message to #general with callback.", {
+                channel: "#general",
+                callback: function() {
+                    var html = $("p").html();
+                    html += "<div>The callback is executed for (5) only.</div>";
+                    $("p").html(html);
+                }
+            });
+        }
+
+        $(function() {
+            $("button").click(send2slack);
+        });
+    </script>
+</body>
+</html>
