@@ -1,0 +1,26 @@
+{
+  "name": "slack-notifier",
+  "main": "slack-notifier.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/cithukyaw/slack-notifier",
+  "authors": [
+    "Sithu K <cithukyaw@gmail.com>"
+  ],
+  "description": "Simple module to send notifications and messages to Slack service using web hooks",
+  "moduleType": [
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "slack"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "jquery": "latest"
+  }
+}
