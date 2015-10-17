@@ -3,14 +3,14 @@
  * slack-notifier may be freely distributed under the MIT license.
  */
 (function() {
-    "use strict";
+    'use strict';
 
     // Establish the running environment: server (node.js) or client (browser)
-    var env = (typeof module !== "undefined" && module.exports) ? "server" : "client";
+    var env = (typeof module !== 'undefined' && module.exports) ? 'server' : 'client';
 
     var slackNotifier = function(request) {
         var settings = {};
-        var name = (env === "server") ? "Node Slack Notifier" : "Client Slack Notifier";
+        var name = (env === 'server') ? 'Node Slack Notifier' : 'Client Slack Notifier';
         var callback = null;
 
         return {
@@ -28,10 +28,10 @@
              */
             configure: function(options) {
                 if (!options) {
-                    throw "'options' must be provided.";
+                    throw 'The parameter "options" must be provided.';
                 }
 
-                if (typeof(options.callback) === "function") {
+                if (typeof(options.callback) === 'function') {
                     callback = options.callback;
                     delete options.callback;
                 }
@@ -58,7 +58,7 @@
                 }
 
                 var fn = null;
-                if (typeof(param) === "object") {
+                if (typeof(param) === 'object') {
                     // overwrite settings
                     if (param.url) {
                         settings.url = param.url;
@@ -67,10 +67,10 @@
                         settings.username = param.username;
                     }
                     if (param.icon_url) {
-                        settings.icon_url = param.icon_url;
+                        settings.iconUrl = param.icon_url;
                     }
                     if (param.icon_emoji) {
-                        settings.icon_emoji = param.icon_emoji;
+                        settings.iconEmoji = param.icon_emoji;
                     }
                     if (param.channel) {
                         settings.channel = param.channel;
@@ -78,7 +78,7 @@
                     if (param.callback) {
                         fn = param.callback;
                     }
-                } else if (typeof(param) === "function") {
+                } else if (typeof(param) === 'function') {
                     fn = param;
                 }
 
@@ -90,11 +90,11 @@
                     settings.username = name;
                 }
 
-                if (typeof(data) === "string") {
+                if (typeof(data) === 'string') {
                     settings.text = data;
-                } else if (typeof(data) === "object") {
+                } else if (typeof(data) === 'object') {
                     if (data.stack) {
-                        settings.text = "```" + data.stack + "```";
+                        settings.text = '```' + data.stack + '```';
                     } else {
                         settings.text = data;
                     }
@@ -106,24 +106,26 @@
                 if (settings.username) {
                     playload.username = settings.username;
                 }
-                if (settings.icon_url) {
-                    playload.icon_url = settings.icon_url;
+                if (settings.iconUrl) {
+                    playload.icon_url = settings.iconUrl;
                 }
-                if (settings.icon_emoji) {
-                    playload.icon_emoji = settings.icon_emoji;
+                if (settings.iconEmoji) {
+                    playload.icon_emoji = settings.iconEmoji;
                 }
                 if (settings.channel) {
                     playload.channel = settings.channel;
                 }
 
-                if (env === "server") {
+                if (env === 'server') {
                     request.post(settings.url)
                         .send(playload)
-                        .end(function(err, res) {
+                        .end(function(err) {
                             if (err) {
                                 throw err;
                             }
+
                             console.log(name + ' sent a notification to Slack.');
+
                             if (fn) { // callback function given here
                                 fn();
                             } else if (callback) { // callback functions for all
@@ -132,13 +134,14 @@
                         });
                 } else {
                     request.ajax({
-                        type: "POST",
+                        type: 'POST',
                         url: settings.url,
                         data: JSON.stringify(playload),
                         crossDomain: true,
-                        success: function(data, status, xhr) {
+                        success: function(data) {
                             if (data === 'ok') {
                                 console.log(name + ' sent a notification to Slack.');
+
                                 if (fn) { // callback function given here
                                     fn();
                                 } else if (callback) { // callback functions for all
@@ -149,7 +152,7 @@
                             }
                         },
                         error: function(xhr, status, error) {
-                            console.log(error);
+                            throw error;
                         }
                     });
                 }
@@ -158,9 +161,9 @@
     };
 
     // "sync" the behavior of node require() and browser <script> tag
-    if (env === "server") {
+    if (env === 'server') {
         // we're on node.js where we have the sweet module system to support exports and require
-        exports = module.exports = slackNotifier(require("superagent"));
+        exports = module.exports = slackNotifier(require('superagent'));
     } else {
         // we're on browser, so let's "call" the defered self-executing function
         window.slackNotifier = slackNotifier(jQuery); // given that jQuery library is included already
