@@ -1,0 +1,30 @@
+{
+    "bitwise": true,
+    "curly" : true,
+    "eqeqeq" : true,
+    "freeze": true,
+    "indent" : true,
+    "latedef" : true,
+    "newcap" : true,
+    "noarg" : true,
+    "noempty" : false,
+    "nonbsp" : true,
+    "nonew" : true,
+    "plusplus" : false,
+    "quotmark" : "single",
+    "strict" : true,
+    "undef" : true,
+    "unused" : true,
+
+    "eqnull" : true,
+
+    "node" : true,
+
+    "globals": {
+        "console": true,
+        "exports": true,
+        "jQuery": true,
+        "require": true,
+        "window": true
+    }
+}
