@@ -2,7 +2,7 @@
  * slack-notifier.js 0.0.1
  * slack-notifier may be freely distributed under the MIT license.
  */
-(function(){
+(function() {
     "use strict";
 
     // Establish the running environment: server (node.js) or client (browser)
@@ -27,6 +27,10 @@
              * @param {Function} options.callback   The callback function to be called when the notification is sent
              */
             configure: function(options) {
+                if (!options) {
+                    throw "'options' must be provided.";
+                }
+
                 if (typeof(options.callback) === "function") {
                     callback = options.callback;
                     delete options.callback;
@@ -78,12 +82,11 @@
                     fn = param;
                 }
 
-                if ( !settings.url ){
-                    console.log(name + ': Slack Webhook URL must be defined.');
-                    return;
+                if (!settings.url) {
+                    throw name + ': Slack Webhook URL must be defined.';
                 }
 
-                if ( !settings.username ){ // use default name
+                if (!settings.username) { // use default name
                     settings.username = name;
                 }
 
