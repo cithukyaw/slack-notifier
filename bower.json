@@ -1,7 +1,7 @@
 {
   "name": "slack-notifier",
   "main": "slack-notifier.js",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "homepage": "https://github.com/cithukyaw/slack-notifier",
   "authors": [
     "Sithu K <cithukyaw@gmail.com>"

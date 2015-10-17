@@ -1,5 +1,5 @@
 /**
- * slack-notifier.js 0.0.1
+ * slack-notifier.js 0.0.3
  * slack-notifier may be freely distributed under the MIT license.
  */
 (function() {
