@@ -1,5 +1,7 @@
 # Slack Notifier
 
+[![](https://data.jsdelivr.com/v1/package/npm/slack-notifier/badge)](https://www.jsdelivr.com/package/npm/slack-notifier)
+
 **Slack Notifier** sends notifications and messages to [Slack](https://slack.com/) service using Incoming Webhook. It can be used both on the server (Node.js) and the client-side (Browser).
 
 It is basically designed for notification messages, not support file attachment yet. You may also use this for error reporting purpose for your production environment because
@@ -14,6 +16,10 @@ It is basically designed for notification messages, not support file attachment 
 ## Install with bower
 
     bower install slack-notifier --save
+
+## CDN
+
+    <script src="//cdn.jsdelivr.net/npm/slack-notifier@0.0.3/slack-notifier.min.js" type="text/javascript"></script>
 
 ## Usage
 
