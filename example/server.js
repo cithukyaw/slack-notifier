@@ -11,7 +11,7 @@
         // icon_url: '/path/to/your/icon',
         // icon_emoji: ':slack:',
         // enabled: true or false (default to true; if false all notification will not be sent; useful if you want to turn off this service from a place)
-        // callback: functionn() { } // The callback function to be executed when every notification is sent
+        // callback: function() { } // The callback function to be executed when every notification is sent
     });
 
     slackNotifier.send('*1.* This is a message to the default configured channel.');
