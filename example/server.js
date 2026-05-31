@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    var slackNotifier = require('../slack-notifier');
+    var slackNotifier = require('../dist/slack-notifier.js');
 
     // global configuration, but it can be overidden by each call
     slackNotifier.configure({

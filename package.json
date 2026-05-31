@@ -1,14 +1,29 @@
 {
   "name": "slack-notifier",
-  "version": "0.0.3",
+  "version": "2.0.0",
   "description": "Simple module to send notifications and messages to Slack service using web hooks",
-  "main": "slack-notifier.js",
+  "main": "dist/slack-notifier.js",
+  "types": "dist/index.d.ts",
+  "browser": "dist/slack-notifier.browser.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc --emitDeclarationOnly && esbuild src/index.ts --bundle --platform=node --format=cjs --outfile=dist/slack-notifier.js && esbuild src/browser.ts --bundle --platform=browser --format=iife --outfile=dist/slack-notifier.browser.js",
+    "build:browser": "esbuild src/browser.ts --bundle --platform=browser --format=iife --outfile=dist/slack-notifier.browser.js",
+    "prepare": "npm run build",
+    "test": "jasmine-node specs",
+    "test:report": "jasmine-node specs --junitreport --output reports/jasmine",
+    "test:coverage": "nyc --reporter=text --reporter=lcov --reporter=cobertura --report-dir coverage jasmine-node specs --junitreport --output reports/jasmine"
   },
-  "dependencies": {
-    "superagent": "latest"
+  "nyc": {
+    "include": [
+      "slack-notifier.js",
+      "dist/**/*.js"
+    ],
+    "exclude": [
+      "dist/**/*.browser.js"
+    ],
+    "all": true
   },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/cithukyaw/slack-notifier.git"
@@ -16,14 +31,17 @@
   "keywords": [
     "slack"
   ],
-  "author": "Sithu Kyaw <cithukyaw@gmail.com> (http://sithukyaw.com)",
+  "author": "Sithu Kyaw <cithukyaw@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cithukyaw/slack-notifier/issues"
   },
   "homepage": "https://github.com/cithukyaw/slack-notifier",
   "devDependencies": {
-    "jasmine-ajax": "^3.1.1",
-    "jasmine-node": "^1.14.5"
+    "esbuild": "^0.21.5",
+    "jasmine-ajax": "4.0.0",
+    "jasmine-node": "3.0.0",
+    "nyc": "^18.0.0",
+    "typescript": "^5.5.4"
   }
 }
