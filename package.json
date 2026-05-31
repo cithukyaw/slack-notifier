@@ -38,10 +38,10 @@
   },
   "homepage": "https://github.com/cithukyaw/slack-notifier",
   "devDependencies": {
-    "esbuild": "^0.21.5",
+    "esbuild": "^0.28.0",
     "jasmine-ajax": "4.0.0",
     "jasmine-node": "3.0.0",
     "nyc": "^18.0.0",
-    "typescript": "^5.5.4"
+    "typescript": "^6.0.3"
   }
 }
