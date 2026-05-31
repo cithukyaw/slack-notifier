@@ -1,6 +1,6 @@
 {
   "name": "slack-notifier",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Simple module to send notifications and messages to Slack service using web hooks",
   "main": "dist/slack-notifier.js",
   "types": "dist/index.d.ts",

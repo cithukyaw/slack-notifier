@@ -5,11 +5,11 @@
     "": {
       "name": "slack-notifier",
       "devDependencies": {
-        "esbuild": "latest",
-        "jasmine-ajax": "latest",
-        "jasmine-node": "latest",
-        "nyc": "latest",
-        "typescript": "latest",
+        "esbuild": "^0.28.0",
+        "jasmine-ajax": "4.0.0",
+        "jasmine-node": "3.0.0",
+        "nyc": "^18.0.0",
+        "typescript": "^6.0.3",
       },
     },
   },
